@@ -5,16 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.yyusufsefa.myapplication.R
+import com.yyusufsefa.myapplication.adapter.MyAdapter
+import com.yyusufsefa.myapplication.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
 
+    private lateinit var viewModel:HomeViewModel
+    private val adapter=MyAdapter(arrayListOf())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
@@ -29,13 +37,25 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button.setOnClickListener {
-            val action=HomeFragmentDirections.actionHomeFragmentToDetailFragment()
-            Navigation.findNavController(it).navigate(action)
-        }
+        viewModel=ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        viewModel.refreshData()
 
+        recyclerView.layoutManager=LinearLayoutManager(context)
+        recyclerView.adapter=adapter
 
-}
+    }
+
+    fun observeLiveData(){
+        viewModel.articles.observe(viewLifecycleOwner, Observer {articles->
+
+            articles?.let {
+
+                recyclerView.visibility=View.VISIBLE
+                adapter.updateList(articles)
+            }
+        })
+
+    }
 
 
 
