@@ -23,7 +23,6 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
     }
 
     override fun onCreateView(
@@ -37,11 +36,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel=ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        viewModel=ViewModelProviders.of(this).get(HomeViewModel::class.java) //hangi fragmenttayız ve hangi viewwmodel kullanacağız
         viewModel.refreshData()
 
         recyclerView.layoutManager=LinearLayoutManager(context)
         recyclerView.adapter=adapter
+
+        observeLiveData()
 
     }
 
@@ -56,7 +57,6 @@ class HomeFragment : Fragment() {
         })
 
     }
-
 
 
 }
