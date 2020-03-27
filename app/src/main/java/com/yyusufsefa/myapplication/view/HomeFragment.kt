@@ -42,15 +42,19 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager=LinearLayoutManager(context)
         recyclerView.adapter=adapter
 
-        observeLiveData()
+        swipeRefresh.setOnRefreshListener {
+            recyclerView.visibility=View.GONE
+            viewModel.refreshData()
+            swipeRefresh.isRefreshing=false
+        }
 
+        observeLiveData()
     }
 
     fun observeLiveData(){
         viewModel.articles.observe(viewLifecycleOwner, Observer {articles->
 
             articles?.let {
-
                 recyclerView.visibility=View.VISIBLE
                 adapter.updateList(articles)
             }

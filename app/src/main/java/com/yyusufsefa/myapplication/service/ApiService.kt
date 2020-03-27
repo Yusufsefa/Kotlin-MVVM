@@ -1,5 +1,6 @@
 package com.yyusufsefa.myapplication.service
 
+import com.yyusufsefa.myapplication.model.Articles
 import com.yyusufsefa.myapplication.model.HeadLines
 import io.reactivex.Single
 import retrofit2.Call

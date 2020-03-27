@@ -19,6 +19,7 @@ class HomeViewModel:ViewModel() {
 
     private val articlesApi=ApiService()
     private val disposable=CompositeDisposable()
+    private val headLines=MutableLiveData<HeadLines>()
 
     val articles=MutableLiveData<List<Articles>>()
 
@@ -29,23 +30,6 @@ class HomeViewModel:ViewModel() {
     }
 
     fun getDataFromAPI(){
-
-        /*disposable.add(
-
-            articlesApi.getData()
-                .subscribeOn(Schedulers.newThread())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object :DisposableSingleObserver<HeadLines>(){
-                    override fun onSuccess(t: HeadLines) {
-                        articles.value=t.articles
-                    }
-
-                    override fun onError(e: Throwable) {
-                        e.printStackTrace()
-                    }
-
-                })
-        )*/
 
         ApiService.getClient().create(ApiInterface::class.java).getHead()
             .enqueue(object :retrofit2.Callback<HeadLines>{
