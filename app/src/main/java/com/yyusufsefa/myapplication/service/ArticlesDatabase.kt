@@ -28,7 +28,6 @@ abstract class ArticlesDatabase :RoomDatabase(){
 
         ).build()
 
-
     }
 
 }

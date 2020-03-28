@@ -3,10 +3,13 @@ package com.yyusufsefa.myapplication.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
 import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Articles(
+
+
     @ColumnInfo(name="source")
     @SerializedName("source")
     var source:Source?,
@@ -37,4 +40,6 @@ data class Articles(
 ){
     @PrimaryKey(autoGenerate = true)
     var uuid: Int=0
+
+
 }
