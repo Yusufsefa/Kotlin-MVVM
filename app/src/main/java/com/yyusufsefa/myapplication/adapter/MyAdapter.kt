@@ -47,7 +47,7 @@ class MyAdapter(val articles: ArrayList<Articles>):RecyclerView.Adapter<MyAdapte
         holder.view.image.downloadFromUrl(articles[position].urlToImage, placeholderProgressBar(holder.view.context))
 
         holder.view.setOnClickListener {
-            val action=HomeFragmentDirections.actionHomeFragmentToDetailFragment()
+            val action=HomeFragmentDirections.actionHomeFragmentToDetailFragment(articles[position].uuid)
             Navigation.findNavController(it).navigate(action)
         }
 
