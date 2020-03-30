@@ -1,13 +1,12 @@
 package com.yyusufsefa.myapplication.service
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.yyusufsefa.myapplication.model.Articles
+import com.yyusufsefa.myapplication.model.Source
 
 
-@Database(entities = arrayOf(Articles::class),version = 1)
+@Database(entities = [Articles::class,Source::class],version = 1)
 abstract class ArticlesDatabase :RoomDatabase(){
 
     abstract fun articleDao():ArticleDao
@@ -31,3 +30,12 @@ abstract class ArticlesDatabase :RoomDatabase(){
     }
 
 }
+
+object Converter {
+
+
+
+}
+
+
+

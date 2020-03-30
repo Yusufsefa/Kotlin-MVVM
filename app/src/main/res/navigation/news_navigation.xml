@@ -24,7 +24,6 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="uuid"
-            app:argType="integer"
-            android:defaultValue="0" />
+            app:argType="long" />
     </fragment>
 </navigation>

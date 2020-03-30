@@ -2,16 +2,20 @@ package com.yyusufsefa.myapplication.model
 
 import com.google.gson.annotations.SerializedName
 
-class HeadLines{
+data class HeadLines(
+
 
     @SerializedName("status")
-    val status:String?=null
+    val status:String?,
 
     @SerializedName("totalResults")
-    val totalResults:String?=null
+    val totalResults:String?,
 
     @SerializedName("articles")
-    val articles:List<Articles>?=null
+    val articles:List<Articles>?
+){
+
+
 
 
 }

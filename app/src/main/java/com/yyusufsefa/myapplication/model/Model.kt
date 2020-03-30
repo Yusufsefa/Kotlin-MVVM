@@ -1,18 +1,14 @@
 package com.yyusufsefa.myapplication.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
+import androidx.room.*
 import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Articles(
 
-
     @ColumnInfo(name="source")
     @SerializedName("source")
-    var source:Source?,
+    val source:Source?,
 
     @ColumnInfo(name="author")
     @SerializedName("author")
@@ -39,7 +35,9 @@ data class Articles(
     val publishedAt:String?
 ){
     @PrimaryKey(autoGenerate = true)
-    var uuid: Int=0
-
+    var uuid: Long=0
 
 }
+
+
+

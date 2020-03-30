@@ -58,7 +58,7 @@ class DetailFragment : Fragment() {
         viewModel.articleLiveData.observe(viewLifecycleOwner, Observer { article->
             article?.let {
                 tvTitle.text=article.title
-                tvSource.text= article.source.toString()
+                tvSource.text=article.source?.name.toString()
                 tvDate.text=article.publishedAt
                 tvDesc.text=article.description
 
