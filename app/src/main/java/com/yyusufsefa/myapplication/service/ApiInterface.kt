@@ -15,10 +15,10 @@ interface ApiInterface {
     ): Call<HeadLines>
 
 
-   @GET("top-headlines?country=tr&apiKey=34e1cf1d09f44589b35ded4a7d77c548")
+   @GET("top-headlines?country=tr&apiKey=yourKey")
    fun getHeadlines():Single<HeadLines>
 
-    @GET("top-headlines?country=tr&apiKey=34e1cf1d09f44589b35ded4a7d77c548")
+    @GET("top-headlines?country=tr&apiKey=yourKey")
     fun getHead():Call<HeadLines>
 
 
