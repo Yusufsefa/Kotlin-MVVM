@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <variable
+            name="article"
+            type="com.yyusufsefa.myapplication.model.Articles" />
+        
+    </data>
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.DetailFragment"
@@ -28,14 +35,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-
-
-
                         <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="250dp">
-
-
                             <ProgressBar
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
@@ -44,17 +46,14 @@
 
                             <ImageView
                                 android:id="@+id/imageView"
+                                android.downloadUrl="@{article.urlToImage}"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop" />
 
-
-
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent" />
-
-
+                                android:layout_height="match_parent"/>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -66,7 +65,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Source"
+                                    android:text="@{article.source.name}"
                                     android:textSize="15dp"
                                     android:textColor="@color/white"
                                     android:id="@+id/tvSource"/>
@@ -74,7 +73,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="5 hour ago"
+                                    android:text="@{article.publishedAt}"
                                     android:gravity="right"
                                     android:textSize="15dp"
                                     android:textColor="@color/white"
@@ -85,7 +84,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TITLE"
+                            android:text="@{article.title}"
                             android:padding="10dp"
                             android:textSize="20dp"
                             android:textColor="@color/black"
@@ -94,7 +93,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Description"
+                            android:text="@{article.description}"
                             android:textSize="15dp"
                             android:padding="10dp"
                             android:textColor="@color/black"
@@ -119,7 +118,7 @@
                     <WebView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/webView"/>
+                        android:id="@+id/webView" />
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>

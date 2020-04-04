@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.yyusufsefa.myapplication.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -18,12 +18,28 @@
         android:id="@+id/detailFragment"
         android:name="com.yyusufsefa.myapplication.view.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail">
         <action
             android:id="@+id/action_detailFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <argument
             android:name="uuid"
-            app:argType="long" />
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="source_name"
+            app:argType="string" />
+        <argument
+            android:name="dateTime"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="urlToImage"
+            app:argType="string" />
+        <argument android:name="url" />
     </fragment>
 </navigation>

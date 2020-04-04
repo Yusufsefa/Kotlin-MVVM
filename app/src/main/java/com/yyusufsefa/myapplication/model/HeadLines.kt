@@ -3,8 +3,6 @@ package com.yyusufsefa.myapplication.model
 import com.google.gson.annotations.SerializedName
 
 data class HeadLines(
-
-
     @SerializedName("status")
     val status:String?,
 

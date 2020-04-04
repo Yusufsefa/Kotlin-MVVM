@@ -46,6 +46,7 @@ class HomeFragment : Fragment() {
             recyclerView.visibility=View.GONE
             viewModel.refreshData()
             swipeRefresh.isRefreshing=false
+            viewModel.refreshFromAPI()
         }
 
         observeLiveData()

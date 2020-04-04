@@ -2,11 +2,49 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <variable
+            name="article"
+            type="com.yyusufsefa.myapplication.model.Articles" />
+        <variable
+            name="onListener"
+            type="com.yyusufsefa.myapplication.adapter.ArticleListener" />
+        
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:onClick="@{onListener::onArticleClicked}">
+
+        <TextView
+            android:id="@+id/uuidText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@{String.valueOf(article.uuid)}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/url"
+            android:visibility="gone"
+            android:text="@{article.url}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDescp"
+            android:visibility="gone"
+            android:text="@{article.description}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvimageUrl"
+            android:visibility="gone"
+            android:text="@{article.urlToImage}"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -25,12 +63,13 @@
                     android:id="@+id/image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android.downloadUrl="@{article.urlToImage}"
                     android:scaleType="centerCrop" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TITLE"
+                    android:text="@{article.title}"
                     android:padding="10dp"
                     android:textSize="20dp"
                     android:textColor="@color/white"
@@ -46,7 +85,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Source"
+                        android:text="@{article.source.name}"
                         android:textSize="15dp"
                         android:textColor="@color/white"
                         android:id="@+id/tvSource"/>
@@ -54,7 +93,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="5 hour ago"
+                        android:text="@{article.publishedAt}"
                         android:gravity="right"
                         android:textSize="15dp"
                         android:textColor="@color/white"
