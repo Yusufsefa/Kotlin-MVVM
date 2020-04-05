@@ -46,7 +46,6 @@ def supportVersion = '28.0.0'
 def retrofitVersion = '2.3.0'
 def glideVersion = '4.9.0'
 def rxJavaVersion = '2.1.1'
-def roomVersion = '2.2.3'
 def navVersion = '2.2.1'
 def preferencesVersion = '1.1.0'
 
@@ -64,10 +63,7 @@ dependencies {
 
     implementation "android.arch.lifecycle:extensions:$lifeCycleExtensionVersion"
 
-    implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
-    kapt "androidx.room:room-compiler:$roomVersion"
-    implementation "androidx.room:room-ktx:$roomVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
