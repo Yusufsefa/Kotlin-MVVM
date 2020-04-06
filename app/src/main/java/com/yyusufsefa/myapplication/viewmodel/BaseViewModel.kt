@@ -1,26 +1,35 @@
 package com.yyusufsefa.myapplication.viewmodel
 
-import android.app.Application
-import android.content.Context
-import androidx.lifecycle.AndroidViewModel
-import kotlinx.coroutines.CoroutineScope
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.launch
 
-abstract class BaseViewModel(application: Application):AndroidViewModel(application),CoroutineScope {
+// in this case, normal viewmodel is okey for you ?
+abstract class BaseViewModel : ViewModel() {
 
-    private val job= Job()
+    /**
+     * You no need to do that viewModel already has own viewModelScope [viewModelScope]by the way you no need to cancel job , its self-canceling
+     */
 
+    private fun testViewModelScope() {
+        viewModelScope.launch(Dispatchers.Main) {
 
-    override val coroutineContext: CoroutineContext
-        get() =job+Dispatchers.Main //işini yap ve main threade dön
-
-
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel()
+        }
     }
+
+
+//    private val job= Job()
+//
+//
+//    override val coroutineContext: CoroutineContext
+//        get() =job+Dispatchers.Main //işini yap ve main threade dön
+//
+//
+//    override fun onCleared() {
+//        super.onCleared()
+//        job.cancel()
+//    }
 
 
 }
