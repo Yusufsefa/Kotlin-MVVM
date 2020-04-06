@@ -14,7 +14,6 @@
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
-
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.yyusufsefa.myapplication.view.DetailFragment"
@@ -23,9 +22,24 @@
         <action
             android:id="@+id/action_detailFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-        <!-- You can pass your own model data as nav. argument -->
         <argument
-            android:name="newsArticle"
-            app:argType="com.yyusufsefa.myapplication.model.Articles" />
+            android:name="uuid"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="source_name"
+            app:argType="string" />
+        <argument
+            android:name="dateTime"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="urlToImage"
+            app:argType="string" />
+        <argument android:name="url" />
     </fragment>
 </navigation>

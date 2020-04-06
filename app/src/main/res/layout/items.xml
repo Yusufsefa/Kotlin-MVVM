@@ -7,12 +7,17 @@
         <variable
             name="article"
             type="com.yyusufsefa.myapplication.model.Articles" />
+        <variable
+            name="onListener"
+            type="com.yyusufsefa.myapplication.adapter.ArticleListener" />
+        
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:onClick="@{onListener::onArticleClicked}">
 
         <TextView
             android:id="@+id/uuidText"

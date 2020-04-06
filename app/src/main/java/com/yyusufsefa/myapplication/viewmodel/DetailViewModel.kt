@@ -5,12 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import com.yyusufsefa.myapplication.model.Articles
 import com.yyusufsefa.myapplication.model.Source
 
-class DetailViewModel:BaseViewModel() {
+class DetailViewModel(application: Application):BaseViewModel(application) {
 
     val articleLiveData= MutableLiveData<Articles>()
 
-    fun getData(articles: Articles){
-        // Please check differences between .value and .postValue
-        articleLiveData.value=articles
+    fun getData(title:String, source: String, time:String, desc:String, imageUrl:String, url:String){
+
+        var article=Articles(Source(null,source),"",title,desc,url,imageUrl,time)
+
+        articleLiveData.value=article
     }
+
+
 }
