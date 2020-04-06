@@ -51,7 +51,6 @@ class HomeFragment : Fragment() {
 
         binding.swipeRefresh.setOnRefreshListener {
             binding.recyclerView.hide()
-            // i did not understand why are you send the same request twice
             viewModel.refreshData()
             binding.swipeRefresh.isRefreshing = false
             viewModel.refreshFromAPI()

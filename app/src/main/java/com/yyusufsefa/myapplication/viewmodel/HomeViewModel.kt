@@ -14,9 +14,7 @@ class HomeViewModel : BaseViewModel() {
     val articles = MutableLiveData<List<Articles>>()
 
     fun refreshData() {
-
         getDataFromAPI()
-
     }
 
     fun refreshFromAPI() {

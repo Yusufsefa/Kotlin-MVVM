@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 class DetailFragment : Fragment() {
 
     private lateinit var articles: Articles
-
     private lateinit var viewModel: DetailViewModel
     private lateinit var dataBinding: FragmentDetailBinding
 
@@ -43,7 +42,6 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
-        //viewModel.getDataFromRoom(uuid)
         viewModel.getData(articles)
         observerLiveData()
     }
@@ -52,7 +50,6 @@ class DetailFragment : Fragment() {
         viewModel.articleLiveData.observe(viewLifecycleOwner, Observer { articles ->
             articles?.let {
                 dataBinding.article = articles
-
                 webView.settings.domStorageEnabled = true
                 webView.settings.javaScriptEnabled = true
                 webView.settings.loadsImagesAutomatically = true

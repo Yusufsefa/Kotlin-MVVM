@@ -29,10 +29,7 @@ data class Articles(
     @SerializedName("publishedAt")
     val publishedAt: String?
 ) : Parcelable{
-    /**
-     * // If you dont use the room,u should remove that annotation
-     * @PrimaryKey(autoGenerate = true)
-     */
+
     @IgnoredOnParcel
     var uuid: Int = 0
 }
