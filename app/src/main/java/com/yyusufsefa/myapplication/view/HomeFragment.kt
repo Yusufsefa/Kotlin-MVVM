@@ -1,67 +1,70 @@
 package com.yyusufsefa.myapplication.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-
-import com.yyusufsefa.myapplication.R
 import com.yyusufsefa.myapplication.adapter.MyAdapter
+import com.yyusufsefa.myapplication.databinding.FragmentHomeBinding
+import com.yyusufsefa.myapplication.util.hide
+import com.yyusufsefa.myapplication.util.show
 import com.yyusufsefa.myapplication.viewmodel.HomeViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var adapter: MyAdapter
 
-    private lateinit var viewModel:HomeViewModel
-    private val adapter=MyAdapter(arrayListOf())
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+
+        //Try to use databinding everyscreen
+        binding = FragmentHomeBinding.inflate(layoutInflater, null, false)
+
+        // Click event with higher-order fun. looking more pretty :),
+        adapter = MyAdapter(arrayListOf()) { articles ->
+            val action =
+                HomeFragmentDirections.actionHomeFragmentToDetailFragment(articles)
+            findNavController().navigate(action)
+        }
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel=ViewModelProviders.of(this).get(HomeViewModel::class.java) //hangi fragmenttayız ve hangi viewwmodel kullanacağız
+        viewModel = ViewModelProviders.of(this)
+            .get(HomeViewModel::class.java) //hangi fragmenttayız ve hangi viewwmodel kullanacağız
         viewModel.refreshData()
 
-        recyclerView.layoutManager=LinearLayoutManager(context)
-        recyclerView.adapter=adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = adapter
 
-        swipeRefresh.setOnRefreshListener {
-            recyclerView.visibility=View.GONE
+        binding.swipeRefresh.setOnRefreshListener {
+            binding.recyclerView.hide()
+            // i did not understand why are you send the same request twice
             viewModel.refreshData()
-            swipeRefresh.isRefreshing=false
+            binding.swipeRefresh.isRefreshing = false
             viewModel.refreshFromAPI()
         }
-
         observeLiveData()
     }
 
-    fun observeLiveData(){
-        viewModel.articles.observe(viewLifecycleOwner, Observer {articles->
-
+    private fun observeLiveData() {
+        viewModel.articles.observe(viewLifecycleOwner, Observer { articles ->
             articles?.let {
-                recyclerView.visibility=View.VISIBLE
+                binding.recyclerView.show()
                 adapter.updateList(articles)
             }
         })
-
     }
-
-
 }
