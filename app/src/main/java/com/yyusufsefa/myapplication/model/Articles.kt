@@ -1,10 +1,13 @@
 package com.yyusufsefa.myapplication.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
 
+@Entity(tableName = "articles_table")
 @Parcelize
 data class Articles(
 
@@ -30,8 +33,9 @@ data class Articles(
     val publishedAt: String?
 ) : Parcelable{
 
+    @PrimaryKey(autoGenerate = true)
     @IgnoredOnParcel
-    var uuid: Int = 0
+    var uuid: Int? = 1
 }
 
 

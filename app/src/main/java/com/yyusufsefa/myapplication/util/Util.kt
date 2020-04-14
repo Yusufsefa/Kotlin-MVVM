@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.yyusufsefa.myapplication.R
 
 // useful ext. fun. for hide/show view component
+
 fun View.show(){
     this.visibility = View.VISIBLE
 }

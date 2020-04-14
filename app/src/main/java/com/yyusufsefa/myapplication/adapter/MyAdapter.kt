@@ -17,9 +17,6 @@ class MyAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-
-        //val view=inflater.inflate(R.layout.items,parent,false)
-
         val view = DataBindingUtil.inflate<ItemsBinding>(inflater, R.layout.items, parent, false)
         return ViewHolder(view)
     }

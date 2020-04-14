@@ -6,6 +6,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 // in this case, normal viewmodel is okey for you ?
+
+
 abstract class BaseViewModel : ViewModel() {
 
     /**
@@ -17,19 +19,6 @@ abstract class BaseViewModel : ViewModel() {
 
         }
     }
-
-
-//    private val job= Job()
-//
-//
-//    override val coroutineContext: CoroutineContext
-//        get() =job+Dispatchers.Main //işini yap ve main threade dön
-//
-//
-//    override fun onCleared() {
-//        super.onCleared()
-//        job.cancel()
-//    }
 
 
 }

@@ -14,9 +14,9 @@ interface ApiInterface {
         @Query("apiKey") apiKey: String?
     ): Call<HeadLines>
 
-    @GET("top-headlines?country=tr&apiKey=yourKey")
+    @GET("top-headlines?country=tr&apiKey=34e1cf1d09f44589b35ded4a7d77c548")
     fun getHeadlines(): Single<HeadLines>
 
-    @GET("top-headlines?country=tr&apiKey=yourKey")
+    @GET("top-headlines?country=tr&apiKey=34e1cf1d09f44589b35ded4a7d77c548")
     fun getHead(): Call<HeadLines>
 }
