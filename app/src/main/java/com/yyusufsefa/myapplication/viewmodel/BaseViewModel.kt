@@ -5,9 +5,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-// in this case, normal viewmodel is okey for you ?
-
-
 abstract class BaseViewModel : ViewModel() {
 
     /**
