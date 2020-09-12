@@ -10,7 +10,7 @@ class DetailViewModel:BaseViewModel() {
     val articleLiveData= MutableLiveData<Articles>()
 
     fun getData(articles: Articles){
-        // Please check differences between .value and .postValue
+       
         articleLiveData.value=articles
     }
 }
